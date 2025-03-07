@@ -4,6 +4,7 @@ import { TodoForm } from "../TodoForm/TodoForm";
 import { TodoType } from "../types/todo.types";
 import { postTodo } from "../ApiService/ApiService";
 import { useTodos } from "../Hooks/useTodos";
+import { TodoList } from "../TodoList/TodoList";
 
 export const App = () => {
   const queryClient = useQueryClient();
@@ -22,10 +23,10 @@ export const App = () => {
     }
   };
 
-  console.log(todos);
   return (
     <div className="App">
       <TodoForm action={submitAction} />
+      {todos?.length && <TodoList todos={todos} />}
     </div>
   );
 };
