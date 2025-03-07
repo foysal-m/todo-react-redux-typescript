@@ -1,12 +1,14 @@
-import React, { useOptimistic } from "react";
+import React from "react";
 import { useQueryClient } from "@tanstack/react-query";
-
 import { TodoForm } from "../TodoForm/TodoForm";
 import { TodoType } from "../types/todo.types";
 import { postTodo } from "../ApiService/ApiService";
+import { useTodos } from "../Hooks/useTodos";
 
 export const App = () => {
   const queryClient = useQueryClient();
+
+  const { data: todos } = useTodos();
 
   const submitAction = async (formData: FormData) => {
     try {
@@ -20,6 +22,7 @@ export const App = () => {
     }
   };
 
+  console.log(todos);
   return (
     <div className="App">
       <TodoForm action={submitAction} />

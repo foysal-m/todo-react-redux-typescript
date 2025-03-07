@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./TodoForm.css";
 
 type SubmitAction = (formData: FormData) => void;
