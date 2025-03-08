@@ -1,4 +1,5 @@
 import { type TodoType } from "../../todosApi/todosApiSlice";
+import "./TodoItem.css";
 
 export type TodoItemProps = {
   todo: TodoType;
