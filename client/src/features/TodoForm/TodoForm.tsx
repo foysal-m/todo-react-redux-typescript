@@ -1,3 +1,5 @@
+import "./TodoForm.css";
+
 type SubmitAction = (formData: FormData) => void;
 
 export const TodoForm = ({ action }: { action: SubmitAction }) => {
