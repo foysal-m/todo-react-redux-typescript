@@ -1,9 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { TodoItem } from "./TodoItem"; // Update path as needed
+import { TodoItem } from "./TodoItem";
 import { vi, type Mock } from "vitest";
 import { useDeleteTodoMutation } from "../../todosApi/todosApiSlice";
 
-// Mock the hook for useDeleteTodoMutation
 vi.mock("../../todosApi/todosApiSlice", () => ({
   useDeleteTodoMutation: vi.fn(),
 }));
@@ -19,7 +18,6 @@ describe("TodoItem Component", () => {
   };
 
   beforeEach(() => {
-    // Initialize the mock for deleteTodo mutation
     deleteTodoMock = vi.fn();
     (useDeleteTodoMutation as Mock).mockReturnValue([deleteTodoMock]);
   });
@@ -27,14 +25,13 @@ describe("TodoItem Component", () => {
   test("renders TodoItem with initial todo text", () => {
     render(<TodoItem todo={todo} />);
 
-    // Check if the todo text is displayed
     expect(screen.getByText("Test Todo")).toBeInTheDocument();
   });
 
   test("toggles completion when tick button is clicked", () => {
     const { getByRole, getByText } = render(<TodoItem todo={todo} />);
 
-    const tickButton = getByRole("img", { name: "tick" });
+    const tickButton = getByRole("button", { name: "Mark as completed" });
     const todoText = getByText("Test Todo");
 
     expect(todoText).not.toHaveStyle("text-decoration: line-through");
@@ -48,10 +45,10 @@ describe("TodoItem Component", () => {
     expect(todoText).not.toHaveStyle("text-decoration: line-through");
   });
 
-  test.only("calls deleteTodo when delete button is clicked", () => {
-    render(<TodoItem todo={todo} />);
+  test("calls deleteTodo when delete button is clicked", () => {
+    const { getByRole } = render(<TodoItem todo={todo} />);
 
-    const deleteButton = screen.getByRole("img", { name: "trash" });
+    const deleteButton = getByRole("button", { name: "Delete todo" });
 
     fireEvent.click(deleteButton);
 

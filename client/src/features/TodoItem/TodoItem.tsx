@@ -23,8 +23,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         <button
           className="tick__icon"
           onClick={toggleCompletion}
-          role="img"
-          aria-label="tick"
+          aria-label="Mark as completed"
         >
           ✔️
         </button>
@@ -38,8 +37,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
 
       <div className="todo__actions">
         <button
-          role="img"
-          aria-label="trash"
+          aria-label="Delete todo"
           className="delete__btn"
           onClick={() => deleteTodo(todo._id)}
         >
