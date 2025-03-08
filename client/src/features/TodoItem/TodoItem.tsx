@@ -6,7 +6,7 @@ import {
 import styles from "./TodoItem.module.scss";
 
 export type TodoItemProps = {
-  todo: TodoType;
+  todo: TodoType & { isPending?: boolean };
 };
 
 export const TodoItem = ({ todo }: TodoItemProps) => {
@@ -43,6 +43,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         >
           X
         </button>
+        {todo.isPending && <small>Pending...</small>}
       </div>
     </div>
   );

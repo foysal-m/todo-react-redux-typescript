@@ -16,9 +16,9 @@ vi.mock("../../todosApi/todosApiSlice", async () => {
 describe("TodoList", () => {
   test("renders the correct number of TodoItems based on todos data", () => {
     const mockTodos = [
-      { _id: "1", todo: "Test Todo 1", completed: false },
-      { _id: "2", todo: "Test Todo 2", completed: false },
-      { _id: "3", todo: "Test Todo 3", completed: false },
+      { _id: "1", todo: "Test Todo 1", completed: false, created_at: "" },
+      { _id: "2", todo: "Test Todo 2", completed: false, created_at: "" },
+      { _id: "3", todo: "Test Todo 3", completed: false, created_at: "" },
     ];
 
     (useGetTodosQuery as Mock).mockReturnValue({
@@ -29,7 +29,7 @@ describe("TodoList", () => {
 
     render(
       <Provider store={store}>
-        <TodoList />
+        <TodoList todos={mockTodos} />
       </Provider>,
     );
 
