@@ -1,7 +1,9 @@
-import { useGetTodosQuery } from "../../todosApi/todosApiSlice";
+import { TodoList } from "../TodoList/TodoList";
 
 export const App = () => {
-  const { data: todos } = useGetTodosQuery();
-  console.log(todos);
-  return <div className="App">foysal</div>;
+  return (
+    <div className="App">
+      <TodoList />
+    </div>
+  );
 };
