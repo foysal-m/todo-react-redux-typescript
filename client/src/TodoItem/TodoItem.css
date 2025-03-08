@@ -1,0 +1,16 @@
+.todo {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  min-width: 300px;
+  margin: 20px auto;
+  padding: 10px;
+  box-shadow: 0 0 10px -1px #3333;
+  border-radius: 5px;
+}
+
+.delete__btn {
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}

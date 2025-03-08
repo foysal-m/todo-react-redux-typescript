@@ -17,3 +17,11 @@ export const postTodo = (body: { todo: string }) => {
     return res.json();
   });
 };
+
+export const deleteTodo = (id: string) => {
+  return fetch(`${BASE_URL}/todo/${id}`, {
+    method: "DELETE",
+  }).then((res) => {
+    return res.json();
+  });
+};

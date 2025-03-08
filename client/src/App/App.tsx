@@ -26,7 +26,7 @@ export const App = () => {
   return (
     <div className="App">
       <TodoForm action={submitAction} />
-      {todos?.length && <TodoList todos={todos} />}
+      {todos?.length ? <TodoList todos={todos} /> : null}
     </div>
   );
 };
