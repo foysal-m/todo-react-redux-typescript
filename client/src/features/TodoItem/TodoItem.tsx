@@ -18,7 +18,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
   };
 
   return (
-    <div className={`${styles.todo} ${isCompleted ? styles.completed : ""}`}>
+    <div className={styles.todo}>
       <div className={styles.todo__content}>
         <button
           className={styles.tick__icon}
@@ -28,8 +28,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
           ✔️
         </button>
         <p
-          className={styles.content__title}
-          style={isCompleted ? { textDecoration: "line-through" } : {}}
+          className={`${styles.content__title} ${isCompleted ? styles.completed : ""}`}
         >
           {todo.todo}
         </p>

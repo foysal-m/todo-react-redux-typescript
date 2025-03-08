@@ -13,6 +13,10 @@ $bg-color-white: white;
   border-radius: math.div($margin-generic, 2);
 }
 
+.content__title.completed {
+  text-decoration: line-through;
+}
+
 .delete__btn {
   cursor: pointer;
   background-color: $bg-color-white;

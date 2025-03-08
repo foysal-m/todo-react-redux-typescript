@@ -15,14 +15,8 @@ This is a **Todo App** that allows users to manage and track tasks. Users can ad
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/todo-app.git
+   git clone https://github.com/foysal-m/todo-react-redux-typescript.git
    ```
-
-## Installation
-
-1. Clone the repository:
-
-   git clone `https://github.com/foysal-m/todo-app.git`
 
 2. Navigate to the project directory and go to server folder and run `npm i` and then `npm start` which will start the express server on 4000.
 

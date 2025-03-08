@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { TodoItem } from "./TodoItem";
 import { vi, type Mock } from "vitest";
 import { useDeleteTodoMutation } from "../../todosApi/todosApiSlice";
+import styles from "./TodoItem.module.scss";
 
 vi.mock("../../todosApi/todosApiSlice", () => ({
   useDeleteTodoMutation: vi.fn(),
@@ -34,15 +35,15 @@ describe("TodoItem Component", () => {
     const tickButton = getByRole("button", { name: "Mark as completed" });
     const todoText = getByText("Test Todo");
 
-    expect(todoText).not.toHaveStyle("text-decoration: line-through");
+    expect(todoText).not.toHaveClass(styles.completed);
 
     fireEvent.click(tickButton);
 
-    expect(todoText).toHaveStyle("text-decoration: line-through");
+    expect(todoText).toHaveClass(styles.completed);
 
     fireEvent.click(tickButton);
 
-    expect(todoText).not.toHaveStyle("text-decoration: line-through");
+    expect(todoText).not.toHaveClass(styles.completed);
   });
 
   test("calls deleteTodo when delete button is clicked", () => {
