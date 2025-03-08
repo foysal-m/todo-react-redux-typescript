@@ -3,7 +3,7 @@ import {
   useDeleteTodoMutation,
   type TodoType,
 } from "../../todosApi/todosApiSlice";
-import "./TodoItem.css";
+import styles from "./TodoItem.module.scss";
 
 export type TodoItemProps = {
   todo: TodoType;
@@ -18,27 +18,27 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
   };
 
   return (
-    <div className={`todo ${isCompleted ? "completed" : ""}`}>
-      <div className="todo__content">
+    <div className={`${styles.todo} ${isCompleted ? styles.completed : ""}`}>
+      <div className={styles.todo__content}>
         <button
-          className="tick__icon"
+          className={styles.tick__icon}
           onClick={toggleCompletion}
           aria-label="Mark as completed"
         >
           ✔️
         </button>
         <p
-          className="content__title"
+          className={styles.content__title}
           style={isCompleted ? { textDecoration: "line-through" } : {}}
         >
           {todo.todo}
         </p>
       </div>
 
-      <div className="todo__actions">
+      <div className={styles.todo__actions}>
         <button
           aria-label="Delete todo"
-          className="delete__btn"
+          className={styles.delete__btn}
           onClick={() => deleteTodo(todo._id)}
         >
           X
