@@ -1,4 +1,7 @@
-import { type TodoType } from "../../todosApi/todosApiSlice";
+import {
+  useDeleteTodoMutation,
+  type TodoType,
+} from "../../todosApi/todosApiSlice";
 import "./TodoItem.css";
 
 export type TodoItemProps = {
@@ -6,6 +9,8 @@ export type TodoItemProps = {
 };
 
 export const TodoItem = ({ todo }: TodoItemProps) => {
+  const [deleteTodo] = useDeleteTodoMutation();
+
   return (
     <div className="todo">
       <div className="todo__content">
@@ -25,7 +30,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
           role="img"
           aria-label="trash"
           className="delete__btn"
-          onClick={() => console.log("Delete todo")}
+          onClick={() => deleteTodo(todo._id)}
         >
           X
         </button>
