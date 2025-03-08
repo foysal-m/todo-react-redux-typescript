@@ -1,17 +1,21 @@
+@use "sass:math";
+$margin-generic: 10px;
+$bg-color-white: white;
+
 .todo {
   display: flex;
   justify-content: space-between;
   width: 40%;
   min-width: 300px;
-  margin: 20px auto;
-  padding: 10px;
-  box-shadow: 0 0 10px -1px #3333;
-  border-radius: 5px;
+  margin: $margin-generic * 2 auto;
+  padding: $margin-generic;
+  box-shadow: 0 0 $margin-generic -1px #3333;
+  border-radius: math.div($margin-generic, 2);
 }
 
 .delete__btn {
   cursor: pointer;
-  background-color: white;
+  background-color: $bg-color-white;
   border: none;
 }
 
@@ -21,9 +25,9 @@
 
 .tick__icon {
   cursor: pointer;
-  background-color: white;
+  background-color: $bg-color-white;
   border: none;
-  margin-right: 10px;
+  margin-right: $margin-generic;
 }
 
 .todo__actions {

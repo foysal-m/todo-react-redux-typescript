@@ -1,25 +1,27 @@
+@use "sass:math";
+$margin-generic: 10px;
+
 .form {
-  width: 40%;
-  min-width: 300px;
-  margin: 50px auto;
+  border-radius: math.div($margin-generic, 2);
+  box-shadow: 0 0 $margin-generic 1px #3333;
   display: flex;
-  box-shadow: 0 0 10px 1px #3333;
-  border-radius: 5px;
+  margin: $margin-generic * 5 auto;
+  min-width: 300px;
   overflow: hidden;
+  width: 40%;
 }
 
 .form__input {
   flex: 3;
-  height: 50px;
-  padding: 10px 20px;
   font-weight: 200;
+  height: $margin-generic * 5;
+  padding: $margin-generic $margin-generic * 2;
 }
 
 .form__submit {
-  flex: 1;
-
   background-color: black;
   color: white;
-  font-weight: 700;
   cursor: pointer;
+  flex: 1;
+  font-weight: 700;
 }
