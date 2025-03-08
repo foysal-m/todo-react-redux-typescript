@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   useDeleteTodoMutation,
   type TodoType,
@@ -10,19 +11,29 @@ export type TodoItemProps = {
 
 export const TodoItem = ({ todo }: TodoItemProps) => {
   const [deleteTodo] = useDeleteTodoMutation();
+  const [isCompleted, setIsCompleted] = useState(todo.completed);
+
+  const toggleCompletion = () => {
+    setIsCompleted(prevState => !prevState);
+  };
 
   return (
-    <div className="todo">
+    <div className={`todo ${isCompleted ? "completed" : ""}`}>
       <div className="todo__content">
         <button
           className="tick__icon"
-          onClick={() => console.log("Toggle todo")}
+          onClick={toggleCompletion}
           role="img"
           aria-label="tick"
         >
           ✔️
         </button>
-        <p className="content__title">{todo.todo}</p>
+        <p
+          className="content__title"
+          style={isCompleted ? { textDecoration: "line-through" } : {}}
+        >
+          {todo.todo}
+        </p>
       </div>
 
       <div className="todo__actions">
