@@ -18,7 +18,7 @@ jobs:
 
       - name: Start server in the background
         run: |
-          nohup npm run start:prod &  # Or the appropriate command to start your server in the background, nohup: this is nonblocking, freeing up the terminal for the next steps in the workflow
+          nohup npm run start # Or the appropriate command to start your server in the background, nohup: this is nonblocking, freeing up the terminal for the next steps in the workflow
 
       - name: Wait for server to be ready
         run: |
@@ -29,4 +29,4 @@ jobs:
         run: npm install cypress --save-dev --legacy-peer-deps
 
       - name: Run Cypress tests
-        run: npm run cypress
+        run: npm run cypress:run
