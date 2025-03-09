@@ -52,6 +52,10 @@ This is a **Todo App** that allows users to manage and track tasks. Users can ad
 - Vitest: This testing framework is used for unit testing, ensuring that the components behave as expected.
 - - React Testing Library: This library is used for testing React components, simulating user interactions, and asserting that the correct UI is rendered.
 
+## Cypress
+
+- Cypress is used for end-to-end (E2E) testing in this project
+
 ## Other Technologies Used
 
 - **React**:Facilitates the creation of the board and streamlines app development with its component-based architecture
