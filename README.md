@@ -24,7 +24,7 @@ This is a **Todo App** that allows users to manage and track tasks. Users can ad
 
 4. Then navigate to client folder and run `npm i` and then `npm start` which will start the react app on a random port (shown in the terminal)
 
-5. Open your browser `http://localhost:${the randomly created port}/`
+5. Open your browser `http://localhost:3000`
 
 ## test
 
