@@ -30,6 +30,8 @@ This is a **Todo App** that allows users to manage and track tasks. Users can ad
 
 - To run the tests: `npm run test`
 - To run the test with coverage report: `npm run coverage`
+- To run cypress e2e test, `npm run cypress:open`, which will produce a headless browser where e2e is shown
+- To run cypress test in terminal `npm run cypress:run`
 
 ## Technologies and Concepts
 
