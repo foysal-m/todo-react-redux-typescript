@@ -1,0 +1,32 @@
+name: Cypress Test
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cypress-test:
+    name: Run Cypress End-to-End Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Start server in the background
+        run: |
+          nohup npm run start:prod &  # Or the appropriate command to start your server in the background, nohup: this is nonblocking, freeing up the terminal for the next steps in the workflow
+
+      - name: Wait for server to be ready
+        run: |
+          # Wait for your server to be up before running Cypress tests
+          sleep 10  # You may need to adjust the time based on your server's start time
+
+      - name: Install Cypress
+        run: npm install cypress --save-dev --legacy-peer-deps
+
+      - name: Run Cypress tests
+        run: npm run cypress
