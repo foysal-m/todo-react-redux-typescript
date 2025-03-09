@@ -64,3 +64,5 @@ This is a **Todo App** that allows users to manage and track tasks. Users can ad
 - **TypeScript**: Provides strict type checking to enhance code quality and maintainability
 - **React Testing Library**: Used for unit testing to ensure component functionality and reliability
 - **SCSS**: Utilized for styling the board, offering advanced features and a more maintainable CSS structure
+
+adding this just to test
