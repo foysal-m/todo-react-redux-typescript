@@ -14,9 +14,16 @@ export const App = () => {
   const [todos, setOptimisticTodos] = useOptimistic(data || []);
 
   const submitAction = async (formData: FormData) => {
+    const todoText = formData.get("todo") as string;
+
+    if (!todoText.trim()) {
+      alert("Please enter a valid todo.");
+      return;
+    }
+
     try {
       const newTodo: Pick<TodoType, "todo"> = {
-        todo: formData.get("todo") as string,
+        todo: todoText,
       };
 
       const optimisticTodo = {
