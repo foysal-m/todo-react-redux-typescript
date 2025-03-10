@@ -21,7 +21,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
     <div className={styles.todo}>
       <div className={styles.todo__content}>
         <button
-          className={styles.tick__icon}
+          className={`${styles.tick__icon} ${isCompleted ? styles.completed : ""}`}
           onClick={toggleCompletion}
           aria-label="Mark as completed"
         >

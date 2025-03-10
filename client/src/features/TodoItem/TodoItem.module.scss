@@ -26,13 +26,25 @@ $bg-color-white: white;
 
 .todo__content {
   display: flex;
+  align-items: center;
 }
 
 .tick__icon {
   cursor: pointer;
   background-color: $bg-color-white;
-  border: none;
+  border-radius: 50%;
   margin-right: $margin-generic;
+  width: $margin-generic * 2;
+  height: $margin-generic * 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.tick__icon.completed {
+  background-color: greenyellow;
 }
 
 .todo__actions {
