@@ -35,8 +35,25 @@ export const todosApiSlice = createApi({
 
       invalidatesTags: [{ type: "Todos", id: "LIST" }],
     }),
+
+    updateTodo: build.mutation<
+      { success: boolean },
+      { id: string; completed: boolean }
+    >({
+      query: ({ id, completed }) => ({
+        url: `/todo/${id}`,
+        method: "PUT",
+        body: { completed },
+      }),
+
+      invalidatesTags: [{ type: "Todos", id: "LIST" }],
+    }),
   }),
 });
 
-export const { useGetTodosQuery, usePostTodoMutation, useDeleteTodoMutation } =
-  todosApiSlice;
+export const {
+  useGetTodosQuery,
+  usePostTodoMutation,
+  useDeleteTodoMutation,
+  useUpdateTodoMutation,
+} = todosApiSlice;

@@ -1,6 +1,6 @@
-import { useState } from "react";
 import {
   useDeleteTodoMutation,
+  useUpdateTodoMutation,
   type TodoType,
 } from "../../todosApi/todosApiSlice";
 import styles from "./TodoItem.module.scss";
@@ -11,24 +11,24 @@ export type TodoItemProps = {
 
 export const TodoItem = ({ todo }: TodoItemProps) => {
   const [deleteTodo] = useDeleteTodoMutation();
-  const [isCompleted, setIsCompleted] = useState(todo.completed);
+  const [updateTodo] = useUpdateTodoMutation();
 
   const toggleCompletion = () => {
-    setIsCompleted(prevState => !prevState);
+    updateTodo({ id: todo._id, completed: !todo.completed });
   };
 
   return (
     <div className={styles.todo}>
       <div className={styles.todo__content}>
         <button
-          className={`${styles.tick__icon} ${isCompleted ? styles.completed : ""}`}
+          className={`${styles.tick__icon} ${todo.completed ? styles.completed : ""}`}
           onClick={toggleCompletion}
           aria-label="Mark as completed"
         >
           ✔️
         </button>
         <p
-          className={`${styles.content__title} ${isCompleted ? styles.completed : ""}`}
+          className={`${styles.content__title} ${todo.completed ? styles.completed : ""}`}
         >
           {todo.todo}
         </p>

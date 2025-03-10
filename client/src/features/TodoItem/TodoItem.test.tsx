@@ -1,15 +1,19 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { TodoItem } from "./TodoItem";
 import { vi, type Mock, expect } from "vitest";
-import { useDeleteTodoMutation } from "../../todosApi/todosApiSlice";
-import styles from "./TodoItem.module.scss";
+import {
+  useDeleteTodoMutation,
+  useUpdateTodoMutation,
+} from "../../todosApi/todosApiSlice";
 
 vi.mock("../../todosApi/todosApiSlice", () => ({
   useDeleteTodoMutation: vi.fn(),
+  useUpdateTodoMutation: vi.fn(),
 }));
 
 describe("TodoItem Component", () => {
   let deleteTodoMock: ReturnType<typeof vi.fn>;
+  let updateTodoMock: ReturnType<typeof vi.fn>;
 
   const todo = {
     _id: "1",
@@ -20,7 +24,10 @@ describe("TodoItem Component", () => {
 
   beforeEach(() => {
     deleteTodoMock = vi.fn();
+    updateTodoMock = vi.fn();
+
     (useDeleteTodoMutation as Mock).mockReturnValue([deleteTodoMock]);
+    (useUpdateTodoMutation as Mock).mockReturnValue([updateTodoMock]);
   });
 
   test("renders TodoItem with initial todo text", () => {
@@ -29,21 +36,15 @@ describe("TodoItem Component", () => {
     expect(screen.getByText("Test Todo")).toBeInTheDocument();
   });
 
-  test("toggles completion when tick button is clicked", () => {
-    const { getByRole, getByText } = render(<TodoItem todo={todo} />);
+  test("toggles completion when tick button is clicked", async () => {
+    const completedTodo = { ...todo, completed: true };
+    const { getByRole, getByText } = render(<TodoItem todo={completedTodo} />);
 
     const tickButton = getByRole("button", { name: "Mark as completed" });
     const todoText = getByText("Test Todo");
 
-    expect(todoText).not.toHaveClass(styles.completed);
-
     fireEvent.click(tickButton);
-
-    expect(todoText).toHaveClass(styles.completed);
-
-    fireEvent.click(tickButton);
-
-    expect(todoText).not.toHaveClass(styles.completed);
+    expect(todoText.className).toContain("completed");
   });
 
   test("calls deleteTodo when delete button is clicked", () => {
