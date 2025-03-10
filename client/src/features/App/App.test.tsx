@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { vi, type Mock } from "vitest";
+import { vi, type Mock, expect } from "vitest";
 import { Provider } from "react-redux";
 import { App } from "./App";
 import { useGetTodosQuery } from "../../todosApi/todosApiSlice";

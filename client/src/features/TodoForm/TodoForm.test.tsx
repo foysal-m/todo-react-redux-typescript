@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { vi } from "vitest";
+import { vi, expect } from "vitest";
 import { TodoForm } from "./TodoForm";
 
 describe("TodoForm Component", () => {

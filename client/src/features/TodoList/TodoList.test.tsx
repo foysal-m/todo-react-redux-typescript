@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { TodoList } from "./TodoList";
 import { useGetTodosQuery } from "../../todosApi/todosApiSlice";
-import { vi, type Mock } from "vitest";
+import { vi, type Mock, expect } from "vitest";
 import { store } from "../../redux/store";
 
 vi.mock("../../todosApi/todosApiSlice", async () => {

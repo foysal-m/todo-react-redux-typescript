@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { TodoItem } from "./TodoItem";
-import { vi, type Mock } from "vitest";
+import { vi, type Mock, expect } from "vitest";
 import { useDeleteTodoMutation } from "../../todosApi/todosApiSlice";
 import styles from "./TodoItem.module.scss";
 
