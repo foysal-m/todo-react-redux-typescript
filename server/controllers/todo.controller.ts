@@ -27,6 +27,28 @@ exports.postTodo = async (req: Request, res: Response) => {
   }
 };
 
+exports.updateTodo = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { completed } = req.body;
+
+    const result = await Todos.findByIdAndUpdate(
+      id,
+      { completed },
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).send({ message: "Todo not found" });
+    }
+
+    res.status(200).send(result);
+  } catch (err) {
+    console.error("Error updating todo", err);
+    res.status(500).send({ message: "Server error" });
+  }
+};
+
 exports.deleteTodo = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
