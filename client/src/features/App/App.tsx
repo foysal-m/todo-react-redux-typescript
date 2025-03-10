@@ -15,6 +15,7 @@ export const App = () => {
 
   const submitAction = async (formData: FormData) => {
     const todoText = formData.get("todo") as string;
+    const newTodoText = todoText.charAt(0).toUpperCase() + todoText.slice(1);
 
     if (!todoText.trim()) {
       alert("Please enter a valid todo.");
@@ -23,7 +24,7 @@ export const App = () => {
 
     try {
       const newTodo: Pick<TodoType, "todo"> = {
-        todo: todoText,
+        todo: newTodoText,
       };
 
       const optimisticTodo = {

@@ -1,6 +1,7 @@
 @use "sass:math";
 $margin-generic: 10px;
 $bg-color-white: white;
+$bg-color-light-green: greenyellow;
 
 .todo {
   display: flex;
@@ -15,7 +16,7 @@ $bg-color-white: white;
 
 .content__title.completed {
   text-decoration: line-through;
-  background-color: greenyellow;
+  background-color: $bg-color-light-green;
 }
 
 .delete__btn {
@@ -44,7 +45,7 @@ $bg-color-white: white;
 }
 
 .tick__icon.completed {
-  background-color: greenyellow;
+  background-color: $bg-color-light-green;
 }
 
 .todo__actions {
