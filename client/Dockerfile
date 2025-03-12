@@ -1,17 +1,16 @@
 FROM node:22-alpine
 
+# Build step
+# 1. copy package.json and package-lock.json to /app dir
+RUN mkdir /app
+COPY package*.json /app
+# 2. Change working directory to newly created app dir
 WORKDIR /app
-
-COPY package.json .
-
-RUN npm install --legacy-peer-deps
-
-RUN npm i -g serve
-
+# 3 . Install dependencies
+RUN npm i --legacy-peer-deps
+# 4. Copy the source code to /app dir
 COPY . .
-
-RUN npm run build
-
+# 5. Expose port 3000 on the container
 EXPOSE 3000
-
-CMD [ "serve", "-s", "dist" ]
+# 6. Run the app
+CMD ["npm", "run", "dev"]

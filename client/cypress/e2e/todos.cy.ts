@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe("Todo list", () => {
   const todoText = "Test Todo";
   const todoId = "mocked-id-1234";

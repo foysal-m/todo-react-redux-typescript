@@ -13,7 +13,7 @@ services: # services which our app going to use. (list of containers we want to 
       - "4000:4000"
     depends_on:
       - mongo
-    command: npm run start # Start the app after building (ensure the start command runs after the build)
+    command: npm run dev # Start the app after building (ensure the start command runs after the build)
     volumes:
       - ./server:/app # Mount current directory to /app inside the container for hot-reloading (optional)
     environment:
