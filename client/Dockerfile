@@ -10,6 +10,7 @@ WORKDIR /app
 RUN npm i --legacy-peer-deps
 # 4. Copy the source code to /app dir
 COPY . .
+
 # 5. Expose port 3000 on the container
 EXPOSE 3000
 # 6. Run the app

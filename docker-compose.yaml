@@ -19,16 +19,16 @@ services: # services which our app going to use. (list of containers we want to 
     environment:
       NODE_ENV: production
 
-  # client:
-  #   build:
-  #     context: ./client # Build the client from the ./client directory
-  #   container_name: client
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - api-server # Wait for the API server to be ready
-  #   volumes:
-  #     - ./client:/app # Mount the client code for development
-  #   command: npm start
-  #   environment:
-  #     NODE_ENV: production
+  client:
+    build:
+      context: ./client # Build the client from the ./client directory
+    container_name: client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-server # Wait for the API server to be ready
+    volumes:
+      - ./client:/app # Mount the client code for development
+    command: npm start
+    environment:
+      NODE_ENV: production
