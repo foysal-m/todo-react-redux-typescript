@@ -7,7 +7,7 @@ export const store = configureStore({
     [todosApiSlice.reducerPath]: todosApiSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(todosApiSlice.middleware),
+    getDefaultMiddleware().concat(todosApiSlice.middleware), // catcing functionalities and benefits of redux toolkit provide by default
 });
 
 setupListeners(store.dispatch);

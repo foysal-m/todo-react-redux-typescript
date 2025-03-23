@@ -16,7 +16,7 @@ app.use(router);
     await connection;
     console.log("Connected to database");
     app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
+      console.log(`Todo app listening on port ${port}`);
     });
   } catch (err) {
     console.log(err);

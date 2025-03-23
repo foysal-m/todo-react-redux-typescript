@@ -9,9 +9,13 @@ import {
 
 export const App = () => {
   const { data } = useGetTodosQuery();
+
+  const sortedAlphabatically =
+    data?.length && [...data].sort((a, b) => (a.todo > b.todo ? 1 : -1));
+
   const [postTodo] = usePostTodoMutation();
 
-  const [todos, setOptimisticTodos] = useOptimistic(data || []);
+  const [todos, setOptimisticTodos] = useOptimistic(sortedAlphabatically || []);
 
   const submitAction = async (formData: FormData) => {
     const todoText = formData.get("todo") as string;

@@ -30,12 +30,13 @@ describe("TodoForm Component", () => {
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(mockSubmitAction).toHaveBeenCalledWith(expect.any(FormData));
-    });
+    // await waitFor(() => {
+    expect(mockSubmitAction).toHaveBeenCalledWith(expect.any(FormData));
+    // });
 
     // To verify the exact value passed, we can check the formData content.
     const formData = mockSubmitAction.mock.calls[0][0];
+
     expect(formData.get("todo")).toBe("Test Todo");
   });
 });
