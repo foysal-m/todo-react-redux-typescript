@@ -55,5 +55,6 @@ describe("TodoItem Component", () => {
     fireEvent.click(deleteButton);
 
     expect(deleteTodoMock).toHaveBeenCalledWith(todo._id);
+    expect(todo).not.toBeInTheDocument();
   });
 });
