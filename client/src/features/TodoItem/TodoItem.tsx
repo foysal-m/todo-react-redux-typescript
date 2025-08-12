@@ -33,7 +33,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
           {todo.todo}
         </p>
       </div>
-
+      <p>{new Date(todo.created_at).toUTCString()}</p>
       <div className={styles.todo__actions}>
         <button
           aria-label="Delete todo"

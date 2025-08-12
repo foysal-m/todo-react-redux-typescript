@@ -1,4 +1,4 @@
-import { useOptimistic } from "react";
+import { useOptimistic, useState, useEffect } from "react";
 import { TodoForm } from "../TodoForm/TodoForm";
 import { TodoList } from "../TodoList/TodoList";
 import {
@@ -8,10 +8,13 @@ import {
 } from "../../todosApi/todosApiSlice";
 
 export const App = () => {
-  const { data } = useGetTodosQuery();
+  const [page, setPage] = useState(1);
+  const { data } = useGetTodosQuery({ page, limit: 5 });
 
   const sortedAlphabatically =
-    data?.length && [...data].sort((a, b) => (a.todo > b.todo ? 1 : -1));
+    data &&
+    data.todos?.length &&
+    [...data.todos].sort((a, b) => (a.todo > b.todo ? 1 : -1));
 
   const [postTodo] = usePostTodoMutation();
 
@@ -67,10 +70,44 @@ export const App = () => {
     }
   };
 
+  const nextButton = () => {
+    if (data && page < data.totalPages) {
+      setPage(page + 1);
+    }
+  };
+
+  const preButton = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  // Handle automatic page change when the page becomes empty
+  useEffect(() => {
+    // If current page has no todos, and we are not on the first page, go to the previous page
+    if (data && data.todos?.length === 0 && page > 1) {
+      setPage(page - 1);
+    }
+    // If current page is greater than total pages, go to the last valid page
+  }, [data, page]); // Dependency on `data` and `page` to trigger when data changes
+
   return (
     <div className="App">
       <TodoForm action={submitAction} />
       <TodoList todos={todos} />
+      {data && data.todos?.length ? (
+        <>
+          <button onClick={nextButton} disabled={page === data.totalPages}>
+            Next
+          </button>
+          <p>{data.todos.length} items</p>
+          <button onClick={preButton} disabled={page === 1}>
+            Pre
+          </button>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

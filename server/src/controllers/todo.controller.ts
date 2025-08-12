@@ -4,13 +4,25 @@ const Todos = require("../models/todo.model");
 
 exports.getAllTodos = async (req: Request, res: Response) => {
   try {
-    const todos = await Todos.find();
-    res.status(200);
-    res.send(todos);
+    const limit = parseInt(req.query.limit as string) || 5;
+    const page = parseInt(req.query.page as string) || 1;
+
+    const skip = (page - 1) * limit;
+
+    const totalCount = await Todos.countDocuments();
+
+    const todos = await Todos.find().skip(skip).limit(limit);
+
+    res.status(200).send({
+      todos,
+      totalCount,
+      currentPage: page,
+      totalPages: Math.ceil(totalCount / limit),
+      perPage: limit,
+    });
   } catch (err) {
     console.error("Error in getAllTodos", err);
-    res.status(500);
-    res.send(err);
+    res.status(500).send(err);
   }
 };
 

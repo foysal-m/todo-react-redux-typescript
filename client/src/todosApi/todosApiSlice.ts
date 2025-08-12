@@ -7,19 +7,30 @@ export type TodoType = {
   completed: boolean;
 };
 
+export type PaginatedTodosResponse = {
+  todos: TodoType[];
+  totalCount: number;
+  currentPage: number;
+  totalPages: number;
+  perPage: number;
+};
+
 export const todosApiSlice = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080" }),
   reducerPath: "todoApi",
   tagTypes: ["Todos"],
   endpoints: build => ({
-    getTodos: build.query<TodoType[], void>({
+    getTodos: build.query<
+      PaginatedTodosResponse,
+      { page?: number; limit: number }
+    >({
       query: () => "/todos",
       providesTags: result => (result ? [{ type: "Todos", id: "LIST" }] : []),
     }),
 
     postTodo: build.mutation<TodoType, { todo: string }>({
       query: body => ({
-        url: "/todo",
+        url: "/todos",
         method: "POST",
         body,
       }),

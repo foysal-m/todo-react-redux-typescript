@@ -1,9 +1,10 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
+import { compression } from "vite-plugin-compression2";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), compression()],
   server: {
     open: false,
     host: "0.0.0.0",
