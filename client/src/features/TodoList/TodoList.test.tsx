@@ -36,5 +36,6 @@ describe("TodoList", () => {
     const todoItems = screen.getAllByText(/Test Todo/);
 
     expect(todoItems).toHaveLength(mockTodos.length);
+    expect(todoItems).not.toHaveLength(4);
   });
 });
